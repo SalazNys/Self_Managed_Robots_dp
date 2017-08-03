@@ -3,8 +3,9 @@ const mustacheExpress = require("mustache-express")
 const path = require("path")
 const data = require("./models/data")
 const app = express()
-const indexRoute = require("./routes/index")
-const userRoute = require("./routes/users")
+const indexRoute = require("./routes/index");
+const userRoute = require("./routes/users");
+const formRoute = require("./routes/form")
 
 app.engine("mustache", mustacheExpress())
 app.set("views", "./views")
@@ -14,6 +15,7 @@ app.set("port", 3000)
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(indexRoute)
+app.use(formRoute)
 app.use(userRoute)
 
 // Start a db connect and list after it's connected.
