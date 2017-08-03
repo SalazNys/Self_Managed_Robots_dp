@@ -6,11 +6,14 @@ const app = express()
 const indexRoute = require("./routes/index");
 const userRoute = require("./routes/users");
 const formRoute = require("./routes/form")
+const bodyParser = require("body-parser");
 
 app.engine("mustache", mustacheExpress())
 app.set("views", "./views")
 app.set("view engine", "mustache")
 app.set("port", 3000)
+
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.use(express.static(path.join(__dirname, "public")))
 

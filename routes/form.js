@@ -11,9 +11,18 @@ router.get("/form", (req, res) => {
 });
 
 router.post("/newRobot", (req, res) => {
+  console.log("REQBODY", req.body);
+  console.log(req.body);
   new Robots(req.body).save()
-    .then((mongoObj) => {
-      res.send(mongoObj)
+    .then((result) => {
+      res.redirect("/");
+      let array = req.body.skills;
+
+      let arraySplit = array.split(",");
+      console.log("arraySplit");
+    })
+    .catch(() => {
+      console.log("");
     })
 })
 

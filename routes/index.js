@@ -5,7 +5,6 @@ const User = require('../models/data');
 router.get('/', (req, res) => {
   User.find()
     .then((data) => {
-      console.log(data);
       res.render('index', { users: data });
     })
 });
