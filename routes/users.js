@@ -17,7 +17,13 @@ router.post("/newRobot", (req, res) => {
       res.redirect(`/users/${newUser._id}`);
     })
     .catch(() => {
-      console.log("");
+    })
+})
+
+router.get("/update", (req, res) => {
+  User.find({ _id : req.params.id })
+    .then((data) => {
+      res.render("form", { users : data });
     })
 })
 
