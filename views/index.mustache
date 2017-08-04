@@ -7,29 +7,23 @@
   </head>
   <body>
     <nav>
-      <a href="/form">Create New Robot</a>
+      <a href="users/form">Create New Robot</a>
     </nav>
     <ul>
       {{ #users }}
+      <div>
+        <li><img src={{ avatar }}></li>
+        <a href="/users/{{ _id }}">
+          <li class='name'>{{ name }}</li>
+        </a>
         {{ #job }}
-          <div>
-            <li><img src={{ avatar }}></li>
-            <a href="/{{ id }}">
-              <li class='name'>{{ name }}</li>
-            </a>
             <li>{{ job }}</li>
             <li>{{ company }}</li>
-          </div>
           {{ /job }}
           {{ ^job }}
-          <div>
-            <li><img src={{ avatar }}></li>
-            <a href="/{{ id }}">
-              <li class='name'>{{ name }}</li>
-            </a>
             <li class='avail'>Available for Hire</li>
-          </div>
         {{ /job }}
+      </div>
       {{ /users }}
     </ul>
   </body>

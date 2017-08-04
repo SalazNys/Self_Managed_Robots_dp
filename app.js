@@ -4,8 +4,7 @@ const path = require("path")
 const data = require("./models/data")
 const app = express()
 const indexRoute = require("./routes/index");
-const userRoute = require("./routes/users");
-const formRoute = require("./routes/form")
+// const userRoute = require("./routes/users");
 const bodyParser = require("body-parser");
 
 app.engine("mustache", mustacheExpress())
@@ -18,8 +17,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(indexRoute)
-app.use(formRoute)
-app.use(userRoute)
+app.use("/users", require("./routes/users"));
 
 // Start a db connect and list after it's connected.
 require("./dbConnection")
