@@ -20,18 +20,30 @@ router.post("/newRobot", (req, res) => {
     })
 })
 
-router.get("/update", (req, res) => {
+router.get('/:id', function(req, res){
+  User.findOne({ _id : req.params.id })
+  .then((data) => {
+    data.mongoid = req.params.id
+    res.render('profile', data);
+  });
+})
+
+router.get("/:id/update", (req, res) => {
   User.find({ _id : req.params.id })
     .then((data) => {
-      res.render("form", { users : data });
+      res.render("update", { users : data });
     })
 })
 
-router.get('/:id', function(req, res){
-  User.findOne({ _id : req.params.id })
-    .then((data) => {
-      res.render('profile', data);
-    });
+router.post("/:id/update", (req, res) => {
+  console.log(req.body);
+  User.findByIdAndUpdate({ _id : req.params.id }, {
+    company: req.body.company
+  }) .then(() => {
+    res.redirect(".")
+  }).catch((err) => {
+    res.send("Error.")
+  })
 })
 
 module.exports = router;

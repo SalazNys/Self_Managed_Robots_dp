@@ -5,15 +5,16 @@
     <title>Update Robots</title>
   </head>
   <body>
-    <form class="" action="/users/updateRobot" method="post">
-      <input type="text" name="address_city" placeholder="City" value="">
-      <input type="text" name="address_country" placeholder="Country"value="">
-      <input type="text" name="avatar" placeholder="Input Image Here"value="">
-      <input type="text" name="company" placeholder="Company" value="">
-      <input type="email" name="email" placeholder="Email" value="">
-      <input type="text" name="job" placeholder="Job" value="">
-      <input type="text" name="name" placeholder="Name" value="">
-      <input type="tel" name="phone" placeholder="Phone Number"value="">
+    {{ #users }}
+    <form class="" action="/users/{{ _id }}/update" method="post">
+      <input type="text" name="address_city" placeholder="City" value="{{ address_city }}">
+      <input type="text" name="address_country" placeholder="Country" value=" {{ address_country }}">
+      <input type="text" name="avatar" placeholder="Input Image Here"value="{{ avatar }}">
+      <input type="text" name="company" placeholder="Company" value="{{ company }}">
+      <input type="email" name="email" placeholder="Email" value="{{email}}">
+      <input type="text" name="job" placeholder="Job" value="{{id}}">
+      <input type="text" name="name" placeholder="Name" value="{{job}}">
+      <input type="tel" name="phone" placeholder="Phone Number"value="{{name}}">
       <label for="">Skills</label>
       <div>
         <input type="checkbox" name="skills" value="programming">
@@ -31,9 +32,10 @@
         <input type="checkbox" name="skills" value="attention-to-detail">
         <label for="">Atention to Detail</label>
       </div>
-      <input type="text" name="university" placeholder="University" value="">
-      <input type="text" name="username" placeholder="Username" value="">
-      <button type="submit" name="button">ROBOT SUBMIT</button>
+      <input type="text" name="university" placeholder="University" value="{{ university }}">
+      <input type="text" name="username" placeholder="Username" value=" {{username}}">
+      <button type="submit" name="button">ROBOT UPDATE</button>
     </form>
+    {{ /users }}
   </body>
 </html>
