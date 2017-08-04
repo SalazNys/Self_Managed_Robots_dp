@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/data');
+const passport = require("passport");
 
 router.get("/form", (req, res) => {
   User.find()
@@ -45,5 +46,27 @@ router.post("/:id/update", (req, res) => {
     res.send("Error.")
   })
 })
+
+router.get("/login", (req, res) => {
+  res.render("login");
+})
+
+// router.get('/login', (req, res, next) => {
+//   console.log("Accessing login");
+//   passport.authenticate('local', function(err, user, info) {
+//     if (err) { return next(err); }
+//     if (!user) { return res.redirect('/login'); }
+//     req.logIn(user, function(err) {
+//       if (err) { return next(err); }
+//       return res.redirect('/users/' + user.username);
+//     });
+//   })(req, res, next);
+// });
+
+// router.post('/login',
+//   passport.authenticate('local', { successRedirect: '/',
+//                                    failureRedirect: '/login',
+//                                    failureFlash: true })
+// );
 
 module.exports = router;
